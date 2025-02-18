@@ -38,6 +38,7 @@ yaml-editor
 Options:
 - `--host`: Host to bind the server to (default: 127.0.0.1)
 - `--port`: Port to bind the server to (default: 8000)
+- `--dir`: Directory containing YAML files (default: current directory)
 
 Example:
 ```bash

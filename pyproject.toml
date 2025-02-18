@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "yaml-editor"
-version = "0.1.5"
+version = "0.1.6"
 description = "A web-based YAML editor with tabular interface"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Alfred Francis <alfredfranciz@gmail.com>"]
 readme = "README.md"
 packages = [{include = "yaml_editor"}]
 include = ["yaml_editor/templates/*"]
