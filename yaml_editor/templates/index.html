@@ -81,24 +81,29 @@
 
         function displayYAMLData(data) {
             const columns = new Set();
+            // Use the first item to determine column order
+            if (data.length > 0) {
+                Object.keys(data[0]).forEach(key => columns.add(key));
+            }
+            // Add any additional columns from other items while preserving order
             data.forEach(item => {
                 Object.keys(item).forEach(key => columns.add(key));
             });
 
             const thead = document.getElementById('tableHead');
             const tbody = document.getElementById('tableBody');
-            const sortedColumns = Array.from(columns).sort();
+            const columnArray = Array.from(columns);
 
             thead.innerHTML = `
                 <tr>
-                    ${sortedColumns.map(col => `<th>${col}</th>`).join('')}
+                    ${columnArray.map(col => `<th>${col}</th>`).join('')}
                 </tr>
             `;
 
             tbody.innerHTML = data.map(item => `
                 <tr onclick="selectRow(this)">
-                    ${sortedColumns.map(col => `
-                        <td contenteditable="true">${item[col] || ''}</td>
+                    ${columnArray.map(col => `
+                        <td contenteditable="true">${item[col] === undefined ? '' : String(item[col])}</td>
                     `).join('')}
                 </tr>
             `).join('');
