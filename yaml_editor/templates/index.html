@@ -103,12 +103,11 @@
             tbody.innerHTML = data.map(item => `
                 <tr onclick="selectRow(this)">
                     ${columnArray.map(col => `
-                        <td contenteditable="true">${item[col] === undefined ? '' : String(item[col])}</td>
+                        <td contenteditable="true" data-is-null="${item[col] === null}">${item[col] === null ? '' : String(item[col])}</td>
                     `).join('')}
                 </tr>
             `).join('');
         }
-        
 
         function getTableData() {
             const thead = document.getElementById('tableHead');
@@ -118,7 +117,8 @@
             return Array.from(tbody.querySelectorAll('tr')).map(row => {
                 const rowData = {};
                 row.querySelectorAll('td').forEach((cell, index) => {
-                    rowData[columns[index]] = cell.textContent;
+                    const isNull = cell.getAttribute('data-is-null') === 'true';
+                    rowData[columns[index]] = cell.textContent.trim() === '' ? '' : cell.textContent;
                 });
                 return rowData;
             });

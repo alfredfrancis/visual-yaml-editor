@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yaml-editor"
-version = "0.1.7"
+version = "0.1.8"
 description = "A web-based YAML editor with tabular interface"
 authors = ["Alfred Francis <alfredfranciz@gmail.com>"]
 readme = "README.md"
